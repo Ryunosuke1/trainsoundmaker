@@ -113,7 +113,7 @@ def trainsound(create, accelerationdeceleration, maxiumspeed, time, gearratio):
         if end2 >= 79380000:
             break
         print('最高速度(km/h)', maxspee, '\n直径', diameter, '\n時速(km/h)',
-              spee, '\n加速度(km/h/s)', acceleration, '経過時間', end111)
+              spee, '\n加速度(m/h/s)', acceleration, '経過時間', end111)
         if 0 <= end111 <= time2:
             spee = 0 + acceleration2 * end92 / 44100
         if time2 < end111 < time3:
