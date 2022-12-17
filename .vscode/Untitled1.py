@@ -120,8 +120,7 @@ def trainsound(accelerationdeceleration, maxiumspeeddiameter, time, gearratio):
     g1, g2 = gearratio
     end92 = end2 * 44100
     acceleration2 = acceleration / 3600
-    brake = -3.5
-    bnake = brake / 3600
+    bnake = deceleration / 3600
     spee = 0
     spee2 = 0
     j = 0
@@ -143,7 +142,7 @@ def trainsound(accelerationdeceleration, maxiumspeeddiameter, time, gearratio):
         end137 = end111 - 1
         exec(end137=[{}.wav].format(end111))
         ##end111 = (end92 - 1) /44100 + 1
-        time3 = end92 - (maxspee / (brake * 1000 / 3600)) * 44100
+        time3 = end92 - (maxspee / (bnake / 3600)) * 44100
         time4 = end92 - time3
         time2 = (maxspee / (acceleration / 3600)) * 44100
         if end2 >= 79380000:
