@@ -182,6 +182,14 @@ def trainsound(accelerationdeceleration, maxiumspeeddiameter, time, gearratio):
 
     exec(scipy.io.wavfile.write(end137, 44100, 44100, wave2(np.int16)))
     endsoon = 1
+
+
+
+
+def main():
+    trainsound()
+    
+# end main
     
 
 
