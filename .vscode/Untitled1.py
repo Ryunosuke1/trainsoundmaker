@@ -98,10 +98,10 @@ theendsoon = 0
 ##    global g2
 
 @click.command()
-@click.argument('ad', 'accelerationdeceleration', prompt="Acceleration and Deceleration(m/h/s)", help="Type acceleration and deceleration(m/h/s)", multiple=True)
-@click.argument('maxiumspeeddiameter', prompt="maxiumspeed_diameter", help="Type maxium speed and wheel diameter", multiple=True)
-@click.argument('time', prompt="train running time", help="Type train running time")
-@click.argument('gearratio', prompt="gearratio(bigger smaller)",multiple=True)
+@click.option('ad', 'accelerationdeceleration', prompt="Acceleration and Deceleration(m/h/s)", help="Type acceleration and deceleration(m/h/s)", multiple=True)
+@click.option('maxiumspeeddiameter', prompt="maxiumspeed_diameter", help="Type maxium speed and wheel diameter", multiple=True)
+@click.option('time', prompt="train running time", help="Type train running time")
+@click.option('gearratio', prompt="gearratio(bigger smaller)",multiple=True)
 def trainsound(accelerationdeceleration, maxiumspeeddiameter, time, gearratio):
     global acceleration
     global acceleration2
