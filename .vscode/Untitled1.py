@@ -18,7 +18,7 @@ import sys
 
 
 
-end2 = 0
+##end2 = 0
 
 
 ##@click.command()
@@ -58,27 +58,27 @@ end1 = 0
 ##0 <= timestart <= end1
 ##timestart = time.time()
 ##end2 = 0
-end92 = end2 * 44100
-acceleration = None
-acceleration2 = acceleration / 3600
-brake = -3.5
-bnake = brake / 3600
-spee = 0
-spee2 = 0
-j = 0
-u = 0
-nanashi2 = 0
-end4 = 0
-end7 = 0
-end9 = 0
-diameter = 860
-diameter2 = diameter / 1000
-x = diameter2 * math.pi
+##end92 = end2 * 44100
+##acceleration = None
+##acceleration2 = acceleration / 3600
+##brake = -3.5
+##bnake = brake / 3600
+##spee = 0
+##spee2 = 0
+##j = 0
+##u = 0
+##nanashi2 = 0
+##end4 = 0
+##end7 = 0
+##end9 = 0
+##diameter = 860
+##diameter2 = diameter / 1000
+##x = diameter2 * math.pi
 # 人は死ぬ　いつか死ぬ
 ##g1 = 82
 ##g2 = 17
-y = g1 / g2
-nanashi = 0
+##y = g1 / g2
+##nanashi = 0
 
 
 def speedup():
