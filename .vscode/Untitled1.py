@@ -21,25 +21,25 @@ import sys
 end2 = 0
 
 
-@click.command()
-@click.argument('ad', 'accelerationdeceleration', prompt="Acceleration and Deceleration(m/h/s)", help="Type acceleration and deceleration(m/h/s)")
-@click.argument('maxiumspeed', prompt="maxiumspeed", help="Type maxium speed")
-@click.argument('time', prompt="train running time", help="Type train running time")
-@click.argument('gearratio', prompt="gearratio(bigger smaller)")
-def trainsoundsound(accelerationdeceleration, maxiumspeed, time, gearratio):
+##@click.command()
+##@click.argument('ad', 'accelerationdeceleration', prompt="Acceleration and Deceleration(m/h/s)", help="Type acceleration and deceleration(m/h/s)")
+##@click.argument('maxiumspeed', prompt="maxiumspeed", help="Type maxium speed")
+##@click.argument('time', prompt="train running time", help="Type train running time")
+##@click.argument('gearratio', prompt="gearratio(bigger smaller)")
+##def trainsoundsound(accelerationdeceleration, maxiumspeed, time, gearratio):
 
-    global end2
-    global maxspee
-    global acceleration
-    global deceleration
-    global g1
-    global g2
+    ##global end2
+    ##global maxspee
+    ##global acceleration
+    ##global deceleration
+    ##global g1
+    ##global g2
 
-    acceleration, deceleration = accelerationdeceleration
-    maxspee = maxiumspeed
-    end2 = time
-    g1, g2 = gearratio
-    trainsound()
+    ##acceleration, deceleration = accelerationdeceleration
+    ##maxspee = maxiumspeed
+    ##end2 = time
+    ##g1, g2 = gearratio
+    ##trainsound()
 
     ##global g1
     ##global g2
@@ -79,7 +79,6 @@ x = diameter2 * math.pi
 ##g2 = 17
 y = g1 / g2
 nanashi = 0
-endsoon = 0
 
 
 def speedup():
@@ -91,16 +90,53 @@ def speedup():
 
 
 theendsoon = 0
+##    global acceleration
+##    global maxspee
+##    global end2
+##    global g1
+##    global g2
 
-
-def trainsound(create, accelerationdeceleration, maxiumspeed, time, gearratio):
+@click.command()
+@click.argument('ad', 'accelerationdeceleration', prompt="Acceleration and Deceleration(m/h/s)", help="Type acceleration and deceleration(m/h/s)")
+@click.argument('maxiumspeeddiameter', prompt="maxiumspeed_diameter", help="Type maxium speed and wheel diameter")
+@click.argument('time', prompt="train running time", help="Type train running time")
+@click.argument('gearratio', prompt="gearratio(bigger smaller)")
+def trainsound(accelerationdeceleration, maxiumspeeddiameter, time, gearratio):
     global acceleration
+    global acceleration2
+    global deceleration
     global maxspee
     global end2
+    global diameter
+    global bnake
+    global endsoon
     global g1
     global g2
+    global end92
+    acceleration, deceleration = accelerationdeceleration
+    maxspee, diameter = maxiumspeeddiameter
+    end2 = time
+    g1, g2 = gearratio
+    end92 = end2 * 44100
+    acceleration2 = acceleration / 3600
+    brake = -3.5
+    bnake = brake / 3600
+    spee = 0
+    spee2 = 0
+    j = 0
+    u = 0
+    nanashi2 = 0
+    end4 = 0
+    end7 = 0
+    end9 = 0
+    diameter2 = diameter / 1000
+    x = diameter2 * math.pi
+    y = g1 / g2
+    nanashi = 0
+    endsoon = 0
 
-    for end111 in range(end7):
+    for end111 in range(end92):
+        acceleration2 = acceleration / 3600
         end111 = + 1
         global end137
         end137 = end111 - 1
@@ -108,7 +144,7 @@ def trainsound(create, accelerationdeceleration, maxiumspeed, time, gearratio):
         ##end111 = (end92 - 1) /44100 + 1
         time3 = end92 - (maxspee / (brake * 1000 / 3600)) * 44100
         time4 = end92 - time3
-        time2 = (maxspee / (acceleration * 1000 / 3600)) * 44100
+        time2 = (maxspee / (acceleration / 3600)) * 44100
         if end2 >= 79380000:
             break
         print('最高速度(km/h)', maxspee, '\n直径', diameter, '\n時速(km/h)',
@@ -165,10 +201,10 @@ def join_waves(inputs, output):
         fpw.close()
 
     except wave.Error:
-        print("waveerror")
+        pass
 
     except Exception:
-        print("error")
+        pass
 
 
 
@@ -184,7 +220,6 @@ if __name__ == '__main__':
 
     inputs = [str(n) + '.wav' for n in range(end92)]
     output = 'sine.wav'
-    end = "compleated!?"
     endsoon = 2
 
     ##join_waves(inputs, output)
