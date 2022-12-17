@@ -22,12 +22,11 @@ end2 = 0
 
 
 @click.command()
-@click.argument("-c", "--create", help="create train sound")
-@click.argument("-ad", "--accelerationdeceleration", prompt="Acceleration and Deceleration(m/h/s)", help="Type acceleration and deceleration(m/h/s)")
-@click.argument("--maxiumspeed", prompt="maxiumspeed", help="Type maxium speed")
-@click.argument("--time", prompt="train running time", help="Type train running time")
-@click.argument("--gearratio", prompt="gearratio(bigger smaller)")
-def trainsoundsound(create, accelerationdeceleration, maxiumspeed, time, gearratio):
+@click.argument('ad', 'accelerationdeceleration', prompt="Acceleration and Deceleration(m/h/s)", help="Type acceleration and deceleration(m/h/s)")
+@click.argument('maxiumspeed', prompt="maxiumspeed", help="Type maxium speed")
+@click.argument('time', prompt="train running time", help="Type train running time")
+@click.argument('gearratio', prompt="gearratio(bigger smaller)")
+def trainsoundsound(accelerationdeceleration, maxiumspeed, time, gearratio):
 
     global end2
     global maxspee
