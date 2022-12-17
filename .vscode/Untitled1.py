@@ -17,12 +17,16 @@ import click
 import sys
 
 
+
+end2 = 0
+
+
 @click.command()
-@click.option("-c", "--create", help="create train sound")
-@click.option("-ad", "--accelerationdeceleration", prompt="Acceleration and Deceleration", help="Type acceleration and deceleration")
-@click.option("--maxiumspeed", prompt="maxiumspeed", help="Type maxium speed")
-@click.option("--time", prompt="train running time", help="Type train running time")
-@click.option("--gearratio", prompt="gearratio(bigger smaller)")
+@click.argument("-c", "--create", help="create train sound")
+@click.argument("-ad", "--accelerationdeceleration", prompt="Acceleration and Deceleration(m/h/s)", help="Type acceleration and deceleration(m/h/s)")
+@click.argument("--maxiumspeed", prompt="maxiumspeed", help="Type maxium speed")
+@click.argument("--time", prompt="train running time", help="Type train running time")
+@click.argument("--gearratio", prompt="gearratio(bigger smaller)")
 def trainsoundsound(create, accelerationdeceleration, maxiumspeed, time, gearratio):
 
     global end2
@@ -36,6 +40,7 @@ def trainsoundsound(create, accelerationdeceleration, maxiumspeed, time, gearrat
     maxspee = maxiumspeed
     end2 = time
     g1, g2 = gearratio
+    trainsound()
 
     ##global g1
     ##global g2
@@ -56,9 +61,9 @@ end1 = 0
 ##end2 = 0
 end92 = end2 * 44100
 ##acceleration = nazo.cli.accelation
-acceleration2 = acceleration * 1000 / 3600
+acceleration2 = acceleration / 3600
 brake = -3.5
-bnake = brake * 1000 / 3600
+bnake = brake / 3600
 spee = 0
 spee2 = 0
 j = 0
@@ -75,6 +80,7 @@ x = diameter2 * math.pi
 ##g2 = 17
 y = g1 / g2
 nanashi = 0
+endsoon = 0
 
 
 def speedup():
@@ -140,6 +146,8 @@ def trainsound(create, accelerationdeceleration, maxiumspeed, time, gearratio):
     exec('{} = None'.format(nanashi13))
 
     exec(scipy.io.wavfile.write(end137, 44100, 44100, wave2(np.int16)))
+    endsoon = 1
+    
 
 
 def join_waves(inputs, output):
@@ -164,13 +172,21 @@ def join_waves(inputs, output):
         print("error")
 
 
-end = 0
+
+if endsoon == 1:
+    join_waves()
+if endsoon == 2:
+    speedup()
+
+
+
 
 if __name__ == '__main__':
 
     inputs = [str(n) + '.wav' for n in range(end92)]
     output = 'sine.wav'
     end = "compleated!?"
+    endsoon = 2
 
     ##join_waves(inputs, output)
 # if end2 == end7:
