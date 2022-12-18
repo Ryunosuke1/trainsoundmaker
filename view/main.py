@@ -89,6 +89,7 @@ def speedup():
     yy, sr = sf.read(file="sine.wav")
     y_stretch = pyrb.time_stretch(yy, sr, 44100)
     sf.write("sinesine.wav", y_stretch, sr, format='wav')
+    
 
 
 theendsoon = 0
@@ -217,9 +218,11 @@ def join_waves(inputs, output):
         speedup()
 
     except wave.Error:
+        error("error")
         pass
 
     except Exception:
+        error("error")
         pass
 
 
