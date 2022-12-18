@@ -104,13 +104,13 @@ theendsoon = 0
 #@click.option('maxiumspeeddiameter',defaul prompt="maxiumspeed_diameter", help="Type maxium speed and wheel diameter", multiple=True)
 #@click.option('time', prompt="train running time", help="Type train running time")
 #@click.option('gearratio', prompt="gearratio(bigger smaller)",multiple=True)
-acceleration = sys.argv[1]
-deceleration = sys.argv[2]
-maxiumspeeds = sys.argv[3]
-diameter = sys.argv[4]   
-time = sys.argv[5]
-g1 = sys.argv[6]
-g2 = sys.argv[7]
+acceleration = 1800
+deceleration = 3500
+maxiumspeeds = 110
+diameter = 850   
+time = 1800
+g1 = 82
+g2 = 17
 
 filelist = [None]
 
@@ -125,12 +125,7 @@ def trainsound(aa, bb, cc, dd, ee, ff, gg):
     global end92
     ##acceleration, deceleration = accelerationdeceleration
     ##maxspee, diameter = maxiumspeeddiameter
-    end2 = ee
-    ##g1, g2 = gearratio
-    end92 = end2 * 44100
-    acceleration2 = aa / 3600
-    bnake = bb / 3600
-    maxspee = cc * 1000 / 3600
+    
 
     spee = 0
     spee2 = 0
@@ -140,42 +135,14 @@ def trainsound(aa, bb, cc, dd, ee, ff, gg):
     end4 = 0
     end7 = 0
     end9 = 0
-    diameter2 = dd / 1000
-    x = diameter2 * math.pi
-    y = ff / gg
+    
     nanashi = 0
     endsoon = 0
 
     for end111 in range(end92):
-        acceleration2 = acceleration / 3600
-        end111 = + 1
-        global end137
-        end137 = end111 - 1
-        end137= str(end111) + "a.wav"        ##end111 = (end92 - 1) /44100 + 1
-        time3 = end92 - (maxspee / bnake) * 44100
-        filelist.append(end137)
-        time4 = end92 - time3
-        time2 = (maxspee / (acceleration / 3600)) * 44100
-        if end2 >= 79380000:
+        trainsoundmaking(aa,bb,cc,dd,ee,ff,gg,end111)
+        if end92 >= 79380000:
             break
-        print('最高速度(km/h)', maxspee, '\n直径', diameter, '\n時速(km/h)',
-              spee, '\n加速度(m/h/s)', acceleration, '経過時間', end111)
-        if 0 <= end111 <= time2:
-            spee = 0 + acceleration2 * end92 / 44100
-        if time2 < end111 < time3:
-            spee = spee2
-        if time3 <= end111 < end1:
-            spee = spee2 + (time4 * bnake)
-            frequency = spee / x
-            f = frequency * y * g2
-            rate = 44410
-            sec = 1.0
-            hurehaba = 1.0
-            ##phase = np.cumsum(2 * np.pi * f / rate * np.ones(int(rate * end2)))
-            wave = np.arrange(0, sec, 1 / rate)  # -1.0 〜 1.0 の値のサイン波
-            wave2 = hurehaba * np.sin(2 * np.pi * f * wave)
-            plt.plot(wave, wave2)
-            write(end137,44100, wave2(np.int16))
     else:
         join_waves(filelist, "sinesine.wav")
 
@@ -199,6 +166,60 @@ trainsound(acceleration, deceleration, maxiumspeeds, diameter, time, g1, g2)
 # end main
     
 
+def trainsoundmaking(aaa, bbb, ccc, ddd, eee, fff, ggg,end113):
+    global end92
+    end2 = eee
+    ##g1, g2 = gearratio
+    end92 = end2 * 44100
+    acceleration2 = aaa / 3600
+    bnake = bbb / 3600
+    maxspee = ccc * 1000 / 3600
+
+    spee = 0
+    spee2 = 0
+    j = 0
+    u = 0
+    nanashi2 = 0
+    end4 = 0
+    end7 = 0
+    end9 = 0
+    diameter2 = ddd / 1000
+    x = diameter2 * math.pi
+    y = fff / ggg
+    nanashi = 0
+    endsoon = 0
+    acceleration2 = aaa / 3600
+    # end111 = + 1
+    diameter2 = ddd / 1000
+    x = diameter2 * math.pi
+    y = fff / ggg
+    nanashi = 0
+    endsoon = 0
+    global end137
+    end137 = end113 - 1
+    end137= str(end113) + "a.wav"        ##end111 = (end92 - 1) /44100 + 1
+    time3 = end92 - (maxspee / bnake) * 44100
+    filelist.append(end137)
+    time4 = end92 - time3
+    time2 = (maxspee / (aaa / 3600)) * 44100
+    print('最高速度(km/h)', maxspee, '\n直径', diameter, '\n時速(km/h)',
+              spee, '\n加速度(m/h/s)', acceleration, '経過時間', end111)
+    if 0 <= end113 <= time2:
+        spee = 0 + acceleration2 * end92 / 44100
+    if time2 < end113 < time3:
+        spee = spee2
+    if time3 <= end113 < end1:
+        spee = spee2 + (time4 * bnake)
+    frequency = spee / x
+    f = frequency * y * g2
+    rate = 44410
+    sec = 1.0
+    hurehaba = 1.0
+    ##phase = np.cumsum(2 * np.pi * f / rate * np.ones(int(rate * end2)))
+    wave = np.arrange(0, sec, 1 / rate)  # -1.0 〜 1.0 の値のサイン波
+    wave2 = hurehaba * np.sin(2 * np.pi * f * wave)
+    plt.plot(wave, wave2)
+    write(end137,44100, wave2(np.int16))
 
 def join_waves(inputs, output):
     
