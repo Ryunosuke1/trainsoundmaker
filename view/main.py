@@ -226,7 +226,7 @@ def join_waves(inputs, output):
 
 
 
-if endsoon == 2:
+##if endsoon == 2:
     speedup()
 
 
