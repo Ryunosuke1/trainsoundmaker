@@ -216,6 +216,7 @@ def join_waves(inputs, output):
             fp.close()
         fpw.close()
         speedup()
+        print("making")
 
     except wave.Error:
         error("error")
