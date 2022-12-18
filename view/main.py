@@ -175,7 +175,7 @@ def trainsound(aa, bb, cc, dd, ee, ff, gg):
             wave = np.arrange(0, sec, 1 / rate)  # -1.0 〜 1.0 の値のサイン波
             wave2 = hurehaba * np.sin(2 * np.pi * f * wave)
             plt.plot(wave, wave2)
-            scipy.io.wavfile.write(end137,44100, wave2(np.int16))
+            write(end137,44100, wave2(np.int16))
     else:
         join_waves(filelist, "sinesine.wav")
 
@@ -194,8 +194,7 @@ def trainsound(aa, bb, cc, dd, ee, ff, gg):
 
 
 
-def main():
-    trainsound(acceleration, deceleration, maxiumspeeds, diameter, time, g1, g2)
+trainsound(acceleration, deceleration, maxiumspeeds, diameter, time, g1, g2)
     
 # end main
     
