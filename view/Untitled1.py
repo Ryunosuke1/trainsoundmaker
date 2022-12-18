@@ -2,10 +2,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from os.path import dirname, join as pjoin
-from view import viewParent
-from view import viewChild
-from model import modelChild
-from model import modelParent
 
 ##import time
 import scipy
