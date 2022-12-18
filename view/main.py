@@ -30,7 +30,7 @@ import sys
 ##@click.argument('gearratio', prompt="gearratio(bigger smaller)")
 ##def trainsoundsound(accelerationdeceleration, maxiumspeed, time, gearratio):
 
-    ##global end2
+
     ##global maxspee
     ##global acceleration
     ##global deceleration
@@ -85,8 +85,8 @@ end1 = 0
 
 def speedup():
     sound_path = 'sine.wav'
-    s, rate = sf.read(sound_path)
-    yy, sr = sf.read("sinesine.wav")
+    ##s, rate = sf.read(sound_path)
+    yy, sr = sf.read(file="sine.wav")
     y_stretch = pyrb.time_stretch(yy, sr, 44100)
     sf.write("sinesine.wav", y_stretch, sr, format='wav')
 
@@ -105,32 +105,31 @@ theendsoon = 0
 #@click.option('gearratio', prompt="gearratio(bigger smaller)",multiple=True)
 acceleration = sys.argv[1]
 deceleration = sys.argv[2]
-maxiumspeed = sys.argv[3]
+maxiumspeeds = sys.argv[3]
 diameter = sys.argv[4]   
 time = sys.argv[5]
 g1 = sys.argv[6]
 g2 = sys.argv[7]
 
+filelist = [None]
 
-def trainsound(acceleration, deceleration, maxiumspeed, diameter, time, gearratio):
+def trainsound(aa, bb, cc, dd, ee, ff, gg):
     ##global acceleration
     global acceleration2
     ##global deceleration
-    global maxspee
     global end2
     ##global diameter
     global bnake
     global endsoon
-    global g1
-    global g2
     global end92
     ##acceleration, deceleration = accelerationdeceleration
     ##maxspee, diameter = maxiumspeeddiameter
-    end2 = time
-    g1, g2 = gearratio
+    end2 = ee
+    ##g1, g2 = gearratio
     end92 = end2 * 44100
-    acceleration2 = acceleration / 3600
-    bnake = deceleration / 3600
+    acceleration2 = aa / 3600
+    bnake = bb / 3600
+    maxspee = cc * 1000 / 3600
 
     spee = 0
     spee2 = 0
@@ -140,9 +139,9 @@ def trainsound(acceleration, deceleration, maxiumspeed, diameter, time, gearrati
     end4 = 0
     end7 = 0
     end9 = 0
-    diameter2 = diameter / 1000
+    diameter2 = dd / 1000
     x = diameter2 * math.pi
-    y = g1 / g2
+    y = ff / gg
     nanashi = 0
     endsoon = 0
 
@@ -151,9 +150,9 @@ def trainsound(acceleration, deceleration, maxiumspeed, diameter, time, gearrati
         end111 = + 1
         global end137
         end137 = end111 - 1
-        exec(end137=[{}.wav].format(end111))
-        ##end111 = (end92 - 1) /44100 + 1
-        time3 = end92 - (maxspee / (bnake / 3600)) * 44100
+        end137= str(end111) + "a.wav"        ##end111 = (end92 - 1) /44100 + 1
+        time3 = end92 - (maxspee / bnake) * 44100
+        filelist.append(end137)
         time4 = end92 - time3
         time2 = (maxspee / (acceleration / 3600)) * 44100
         if end2 >= 79380000:
@@ -166,39 +165,36 @@ def trainsound(acceleration, deceleration, maxiumspeed, diameter, time, gearrati
             spee = spee2
         if time3 <= end111 < end1:
             spee = spee2 + (time4 * bnake)
+            frequency = spee / x
+            f = frequency * y * g2
+            rate = 44410
+            sec = 1.0
+            hurehaba = 1.0
+            ##phase = np.cumsum(2 * np.pi * f / rate * np.ones(int(rate * end2)))
+            wave = np.arrange(0, sec, 1 / rate)  # -1.0 〜 1.0 の値のサイン波
+            wave2 = hurehaba * np.sin(2 * np.pi * f * wave)
+            plt.plot(wave, wave2)
+            scipy.io.wavfile.write(end137,44100, wave2(np.int16))
+    else:
+        join_waves(filelist, "sinesine.wav")
 
-    frequency = spee / x
-    f = frequency * y * g2
-    rate = 44410
-    ##phase = np.cumsum(2 * np.pi * f / rate * np.ones(int(rate * end2)))
-    sec = 1.0
-    hurehaba = 1.0
 
-    # 波形を生成
-    wave = np.arrange(0, sec, 1 / rate)  # -1.0 〜 1.0 の値のサイン波
-    # import scipy.signal して、
-# wave = scipy.signal.sawtooth(phases) とすると鋸歯状波、
-# wave = scipy.signal.square(phases) とすると矩形波になる
-    # 16bit の wav ファイルに書き出す
-
-    wave2 = hurehaba * np.sin(2*np.pi*f*wave)
-    plt.plot(wave, wave2)
 
     # wave = (wave * float(2 ** 15 - 1)).astype(np.int16)  # 値域を 16bit にする
     ##g = scipy.io.wavfile.write('sinesinesinesine' + str[end2] + 'a.wav', rate, wave)
     ##p = {}.setparams(nchannels = 1, sampwidth = 2, framerate = rate, nframes = rate, comptype = None, compname = "not compressed")
     end4 = end2
     nanashi13 = range(end7)
-    exec('{} = None'.format(nanashi13))
+    ##exec('{} = None'.format(nanashi13))
 
-    exec(scipy.io.wavfile.write(end137, 44100, 44100, wave2(np.int16)))
+    ##scipy.io.wavfile.write(end137, 44100, 44100, wave2(np.int16))
     endsoon = 1
 
 
 
 
 def main():
-    trainsound()
+    trainsound(acceleration, deceleration, maxiumspeeds, diameter, time, g1, g2)
     
 # end main
     
@@ -218,6 +214,8 @@ def join_waves(inputs, output):
             fpw.writeframes(fp.readframes(fp.getnframes()))
             fp.close()
         fpw.close()
+        else:
+            speedup()
 
     except wave.Error:
         pass
@@ -227,19 +225,18 @@ def join_waves(inputs, output):
 
 
 
-if endsoon == 1:
-    join_waves()
+
 if endsoon == 2:
     speedup()
 
 
 
 
-if __name__ == '__main__':
+##if __name__ == '__main__':
 
-    inputs = [str(n) + '.wav' for n in range(end92)]
-    output = 'sine.wav'
-    endsoon = 2
+    ##inputs = [str(n) + '.wav' for n in range(end92)]
+    ##output = 'sine.wav'
+    ##endsoon = 2
 
     ##join_waves(inputs, output)
 # if end2 == end7:
