@@ -214,8 +214,7 @@ def join_waves(inputs, output):
             fpw.writeframes(fp.readframes(fp.getnframes()))
             fp.close()
         fpw.close()
-        else:
-            speedup()
+        speedup()
 
     except wave.Error:
         pass
