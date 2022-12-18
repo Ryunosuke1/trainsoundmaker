@@ -30,7 +30,7 @@ import sys
 ##@click.argument('gearratio', prompt="gearratio(bigger smaller)")
 ##def trainsoundsound(accelerationdeceleration, maxiumspeed, time, gearratio):
 
-    ##global end2
+
     ##global maxspee
     ##global acceleration
     ##global deceleration
