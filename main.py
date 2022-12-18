@@ -89,6 +89,7 @@ def speedup():
     yy, sr = sf.read(file="sine.wav")
     y_stretch = pyrb.time_stretch(yy, sr, 44100)
     sf.write("sinesine.wav", y_stretch, sr, format='wav')
+    
 
 
 theendsoon = 0
@@ -174,7 +175,7 @@ def trainsound(aa, bb, cc, dd, ee, ff, gg):
             wave = np.arrange(0, sec, 1 / rate)  # -1.0 〜 1.0 の値のサイン波
             wave2 = hurehaba * np.sin(2 * np.pi * f * wave)
             plt.plot(wave, wave2)
-            scipy.io.wavfile.write(end137,44100, wave2(np.int16))
+            write(end137,44100, wave2(np.int16))
     else:
         join_waves(filelist, "sinesine.wav")
 
@@ -193,8 +194,7 @@ def trainsound(aa, bb, cc, dd, ee, ff, gg):
 
 
 
-def main():
-    trainsound(acceleration, deceleration, maxiumspeeds, diameter, time, g1, g2)
+trainsound(acceleration, deceleration, maxiumspeeds, diameter, time, g1, g2)
     
 # end main
     
@@ -214,17 +214,21 @@ def join_waves(inputs, output):
             fpw.writeframes(fp.readframes(fp.getnframes()))
             fp.close()
         fpw.close()
+        speedup()
+        print("making")
 
     except wave.Error:
+        error("error")
         pass
 
     except Exception:
+        error("error")
         pass
 
 
 
 
-if endsoon == 2:
+##if endsoon == 2:
     speedup()
 
 
